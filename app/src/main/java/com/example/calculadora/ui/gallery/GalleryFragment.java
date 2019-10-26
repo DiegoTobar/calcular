@@ -1,11 +1,14 @@
 package com.example.calculadora.ui.gallery;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -20,6 +23,9 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
 
     private GalleryViewModel galleryViewModel;
     private TextView display;
+    private EditText historial;
+    String total="";
+    SharedPreferences prefe;
     Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bmas,bmen,bmul,bdiv,bpun,bigual,bdel, bac,bacerca,bder,bizq;
     Button bsen,bcos,btan,bln,bsqr,bporcentaje,babs,b1x,bfactorial;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -102,6 +108,8 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
             bfactorial = root.findViewById(R.id.bfactorial);
             bfactorial.setOnClickListener(this);
 
+
+
         }
         display = root.findViewById(R.id.display);
         return root;
@@ -110,6 +118,7 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
   @Override
     public void onClick(View v) {
         String cadena = display.getText().toString();
+
         String cadenavacia="";
         String resultString="";
         char igual= '0';
@@ -168,10 +177,15 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
                     Double result = new DoubleEvaluator().evaluate(cadena);
 
                     resultString = String.valueOf(result);
+
+
+                    prefe=this.getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
+                    total=prefe.getString("operaciones", "");
+                    SharedPreferences.Editor editor=prefe.edit();
+                    total=total+display.getText()+"="+resultString+"\n";
+                    editor.putString("operaciones", total);
+                    editor.apply();
                     igual='1';
-                    cadena=cadenavacia;
-                    display.setText("");
-                    //display.setText(resultString);
                     break;
 
                 case R.id.btnpunto:
@@ -180,6 +194,7 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
                     else
                         cadena = cadena + '.';
                     break;
+
 
                 case R.id.btndel:
                     if(cadena.length() != 0)

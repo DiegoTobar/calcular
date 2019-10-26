@@ -1,9 +1,12 @@
 package com.example.calculadora.ui.slideshow;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -15,6 +18,9 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.calculadora.R;
 
 public class SlideshowFragment extends Fragment {
+    private TextView historial;
+    String cadena;
+    SharedPreferences prefe;
 
     private SlideshowViewModel slideshowViewModel;
 
@@ -30,6 +36,12 @@ public class SlideshowFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        historial = root.findViewById(R.id.calculos);
+        prefe=this.getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
+        historial.setText(prefe.getString("operaciones",""));
+
         return root;
+
     }
 }
