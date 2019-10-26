@@ -21,6 +21,7 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
     private GalleryViewModel galleryViewModel;
     private TextView display;
     Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bmas,bmen,bmul,bdiv,bpun,bigual,bdel, bac,bacerca,bder,bizq;
+    Button bsen,bcos,btan,bln,bsqr,bporcentaje,babs,b1x,bfactorial;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
@@ -34,7 +35,7 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
             }
 
         });
-        if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE) {
+
 
             b0 = root.findViewById(R.id.btn_0);
             b0.setOnClickListener(this);
@@ -78,9 +79,31 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
             bder.setOnClickListener(this);
             bizq = root.findViewById(R.id.btn_izq);
             bizq.setOnClickListener(this);
-            display = root.findViewById(R.id.display);
+
+        if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE) {
+
+
+            bsen = root.findViewById(R.id.btnsen);
+            bsen.setOnClickListener(this);
+            bcos = root.findViewById(R.id.btncos);
+            bcos.setOnClickListener(this);
+            btan = root.findViewById(R.id.btntan);
+            btan.setOnClickListener(this);
+            bln = root.findViewById(R.id.btnln);
+            bln.setOnClickListener(this);
+            bsqr = root.findViewById(R.id.btnsqr);
+            bsqr.setOnClickListener(this);
+            babs = root.findViewById(R.id.btn_x);
+            babs.setOnClickListener(this);
+            bporcentaje = root.findViewById(R.id.bporcentaje);
+            bporcentaje.setOnClickListener(this);
+            b1x = root.findViewById(R.id.boton_uno_x);
+            b1x.setOnClickListener(this);
+            bfactorial = root.findViewById(R.id.bfactorial);
+            bfactorial.setOnClickListener(this);
 
         }
+        display = root.findViewById(R.id.display);
         return root;
     }
 
@@ -173,11 +196,30 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
                         cadena=cadena+')';
                     break;
                 case R.id.btn_izq:
-
                     cadena=cadena+'(';
-
+                    break;
+                case R.id.btnsen:
+                    cadena=cadena+ "sen(";
+                    break;
+                case R.id.btncos:
+                    cadena=cadena+ "cos(";
+                    break;
+                case R.id.btntan:
+                    cadena=cadena+ "tan(";
+                    break;
+                case R.id.bporcentaje:
+                    cadena=cadena+ "%";
                     break;
 
+                case R.id.bfactorial:
+                    cadena=cadena+ "!";
+                    break;
+                case R.id.boton_uno_x:
+                    cadena= "1/"+cadena;
+                    break;
+                case R.id.btn_x:
+                    cadena=cadena+ "*abs(";
+                    break;
         }
         if(igual=='1') {
              display.setText(resultString);
