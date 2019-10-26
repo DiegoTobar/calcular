@@ -1,5 +1,6 @@
 package com.example.calculadora.ui.gallery;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,52 +34,53 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
             }
 
         });
+        if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE) {
 
-        b0=root.findViewById(R.id.btn_0);
-        b0.setOnClickListener(this);
-        b1=root.findViewById(R.id.btn_1);
-        b1.setOnClickListener(this);
-        b2=root.findViewById(R.id.btn2);
-        b2.setOnClickListener(this);
-        b3=root.findViewById(R.id.btn3);
-        b3.setOnClickListener(this);
-        b4=root.findViewById(R.id.btn4);
-        b4.setOnClickListener(this);
-        b5=root.findViewById(R.id.btn5);
-        b5.setOnClickListener(this);
-        b6=root.findViewById(R.id.btn6);
-        b6.setOnClickListener(this);
-        b7=root.findViewById(R.id.btn7);
-        b7.setOnClickListener(this);
-        b8=root.findViewById(R.id.btn8);
-        b8.setOnClickListener(this);
-        b9=root.findViewById(R.id.btn9);
-        b9.setOnClickListener(this);
-        bmas=root.findViewById(R.id.btn_mas);
-        bmas.setOnClickListener(this);
-        bmen=root.findViewById(R.id.btn_menos);
-        bmen.setOnClickListener(this);
-        bmul=root.findViewById(R.id.btn_por);
-        bmul.setOnClickListener(this);
-        bdiv=root.findViewById(R.id.btn_div);
-        bdiv.setOnClickListener(this);
-        bpun=root.findViewById(R.id.btnpunto);
-        bpun.setOnClickListener(this);
-        bigual=root.findViewById(R.id.btnigual);
-        bigual.setOnClickListener(this);
-        bdel=root.findViewById(R.id.btndel);
-        bdel.setOnClickListener(this);
-        bac=root.findViewById(R.id.btnac);
-        bac.setOnClickListener(this);
-        bacerca=root.findViewById(R.id.btndel);
-        bacerca.setOnClickListener(this);
-        bder=root.findViewById(R.id.btn_der);
-        bder.setOnClickListener(this);
-        bizq=root.findViewById(R.id.btn_izq);
-        bizq.setOnClickListener(this);
-        display = root.findViewById(R.id.display);
+            b0 = root.findViewById(R.id.btn_0);
+            b0.setOnClickListener(this);
+            b1 = root.findViewById(R.id.btn_1);
+            b1.setOnClickListener(this);
+            b2 = root.findViewById(R.id.btn2);
+            b2.setOnClickListener(this);
+            b3 = root.findViewById(R.id.btn3);
+            b3.setOnClickListener(this);
+            b4 = root.findViewById(R.id.btn4);
+            b4.setOnClickListener(this);
+            b5 = root.findViewById(R.id.btn5);
+            b5.setOnClickListener(this);
+            b6 = root.findViewById(R.id.btn6);
+            b6.setOnClickListener(this);
+            b7 = root.findViewById(R.id.btn7);
+            b7.setOnClickListener(this);
+            b8 = root.findViewById(R.id.btn8);
+            b8.setOnClickListener(this);
+            b9 = root.findViewById(R.id.btn9);
+            b9.setOnClickListener(this);
+            bmas = root.findViewById(R.id.btn_mas);
+            bmas.setOnClickListener(this);
+            bmen = root.findViewById(R.id.btn_menos);
+            bmen.setOnClickListener(this);
+            bmul = root.findViewById(R.id.btn_por);
+            bmul.setOnClickListener(this);
+            bdiv = root.findViewById(R.id.btn_div);
+            bdiv.setOnClickListener(this);
+            bpun = root.findViewById(R.id.btnpunto);
+            bpun.setOnClickListener(this);
+            bigual = root.findViewById(R.id.btnigual);
+            bigual.setOnClickListener(this);
+            bdel = root.findViewById(R.id.btndel);
+            bdel.setOnClickListener(this);
+            bac = root.findViewById(R.id.btnac);
+            bac.setOnClickListener(this);
+            bacerca = root.findViewById(R.id.btndel);
+            bacerca.setOnClickListener(this);
+            bder = root.findViewById(R.id.btn_der);
+            bder.setOnClickListener(this);
+            bizq = root.findViewById(R.id.btn_izq);
+            bizq.setOnClickListener(this);
+            display = root.findViewById(R.id.display);
 
-
+        }
         return root;
     }
 
@@ -145,6 +147,7 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
                     resultString = String.valueOf(result);
                     igual='1';
                     cadena=cadenavacia;
+                    display.setText("");
                     //display.setText(resultString);
                     break;
 
