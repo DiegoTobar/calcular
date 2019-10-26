@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':MathParser.org-mXparser-v.4.2.0-jdk.1.8', ':MathParser'
 rootProject.name='Calculadora'
