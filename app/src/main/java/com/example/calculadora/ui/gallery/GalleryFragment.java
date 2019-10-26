@@ -88,7 +88,6 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
         String cadenavacia="";
         String resultString="";
         char igual= '0';
-        if(igual=='0'){
             switch (v.getId()) {
                 case R.id.btn_0:
                     cadena = cadena+'0' ;
@@ -142,8 +141,10 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
 
                 case R.id.btnigual:
                     Double result = new DoubleEvaluator().evaluate(cadena);
+
                     resultString = String.valueOf(result);
                     igual='1';
+                    cadena=cadenavacia;
                     //display.setText(resultString);
                     break;
 
@@ -173,11 +174,12 @@ public class GalleryFragment extends Fragment implements  View.OnClickListener{
                     cadena=cadena+'(';
 
                     break;
-            }
-        }
-        else
-             display.setText(resultString);
 
+        }
+        if(igual=='1') {
+             display.setText(resultString);
+            }
+        else
             display.setText(cadena);
 
     }
